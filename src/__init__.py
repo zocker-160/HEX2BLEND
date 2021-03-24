@@ -65,13 +65,48 @@ class ImportAnim(bpy.types.Operator, ImportHelper):
         else:
             return {'CANCELLED'}
 
+class ButtonPanel(bpy.types.Panel):
+    """ Panel for triggering the import function """
+
+    bl_label = "HEX2BLEND"
+    bl_idname = "OBJECT_PT_hex2blend"
+    bl_space_type = "PROPERTIES"
+    bl_region_type = "WINDOW"
+    bl_context = "view_layer"
+
+    def draw(self, context):
+        row1 = self.layout.row(align=True)
+        row1.operator("import_hex.csv", text="Import CSV (Lamps)", icon="IMPORT")
+
+        row2 = self.layout.row(align=True)
+        row2.operator("import_hex.ledanim", text="Import JSON (Animation)", icon="IMPORT")
+
+        sep1 = self.layout.separator_spacer()
+
+        row3 = self.layout.row(align=True)
+        row3.operator("import_hex.clean", text="Clear import cache", icon="TRASH")
+
+class CleanOperator(bpy.types.Operator):
+    """ Operator that allows to clear the data in memory from import """
+
+    bl_idname = "import_hex.clean"
+    bl_label = "clear HEX2BLEND import chache"
+
+    def execute(self, context):
+        Im.allLamps.clear()
+        return {'FINISHED'}
+
 def register():
     bpy.utils.register_class(ImportCSV)
     bpy.utils.register_class(ImportAnim)
+    bpy.utils.register_class(ButtonPanel)
+    bpy.utils.register_class(CleanOperator)
 
 def unregister():
     bpy.utils.unregister_class(ImportCSV)
     bpy.utils.unregister_class(ImportAnim)
+    bpy.utils.unregister_class(ButtonPanel)
+    bpy.utils.unregister_class(CleanOperator)
 
 if __name__ == "__main__":
     register()
