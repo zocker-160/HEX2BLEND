@@ -4,9 +4,9 @@ bl_info = {
     "description" : "description",
     "blender" : (2, 92, 0),
     "version" : (0, 1),
-    "location" : "File > Import",
+    "location" : "View Layer Properties",
     "warning" : "Work in Progress",
-    "category" : "Import-Export",
+    "category" : "Import",
     "tracker_url": "https://github.com/zocker-160/HEX2BLEND"
 }
 
