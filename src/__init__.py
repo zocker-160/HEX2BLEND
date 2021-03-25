@@ -7,7 +7,7 @@ bl_info = {
     "location" : "View Layer Properties",
     "warning" : "Work in Progress",
     "category" : "Import",
-    "tracker_url": "https://github.com/zocker-160/HEX2BLEND"
+    "tracker_url": "https://github.com/zocker-160/HEX2BLEND/issues"
 }
 
 import bpy
