@@ -50,7 +50,7 @@ def main_import(csvFile: str, csvSep=","):
     with open(csvFile, "r") as csv:
 
         importCol = add_collection("import")
-        parentEmpty = bpy.data.objects.new("    parent", None)
+        parentEmpty = bpy.data.objects.new("parent", None)
         parentEmpty.empty_display_size = 2
         parentEmpty.empty_display_type = 'PLAIN_AXES'
         
