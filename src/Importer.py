@@ -36,9 +36,7 @@ def insert_keyframe(frame: int, keyframes: list):
     for i, lamp in enumerate(allLamps):
         l: bpy.types.Object = lamp
 
-        l.color[0] = keyframes[i]["r"]
-        l.color[1] = keyframes[i]["g"]
-        l.color[2] = keyframes[i]["b"]
+        l.color = keyframes[i]["r"], keyframes[i]["g"], keyframes[i]["b"]
 
         print(f"inserting keyframe at frame {frame} with {l.color}")
         lamp.keyframe_insert('color', frame=frame)
