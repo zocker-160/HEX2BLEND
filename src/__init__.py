@@ -3,7 +3,7 @@ bl_info = {
     "author" : "zocker_160",
     "description" : "description",
     "blender" : (2, 92, 0),
-    "version" : (0, 1),
+    "version" : (0, 2),
     "location" : "View Layer Properties",
     "warning" : "Work in Progress",
     "category" : "Import",
