@@ -11,7 +11,7 @@ bl_info = {
 }
 
 import bpy
-from bpy.props import StringProperty
+from bpy.props import StringProperty, FloatProperty
 
 from bpy_extras.io_utils import ImportHelper, path_reference_mode
 
@@ -35,10 +35,17 @@ class ImportCSV(bpy.types.Operator, ImportHelper):
         default=","
     )
 
+    setting_scaling: FloatProperty(
+        name="Parent Scale Factor",
+        description="set the scale factor of the parent object",
+        default=0.001,
+        min=0.001
+    )
+
     def execute(self, context):
         print("calling import csv...")
 
-        if Im.main_import(csvFile=self.filepath, csvSep=self.csv_separator):
+        if Im.main_import(csvFile=self.filepath, csvSep=self.csv_separator, parentScale=self.setting_scaling):
             return {'FINISHED'}
         else:
             return {'CANCELLED'}

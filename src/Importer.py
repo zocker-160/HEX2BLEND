@@ -42,7 +42,7 @@ def insert_keyframe(frame: int, keyframes: list):
         lamp.keyframe_insert('color', frame=frame)
 
 
-def main_import(csvFile: str, csvSep=","):
+def main_import(csvFile: str, csvSep: str, parentScale: float):
     # clear all lamp data; TODO: this is not a great solution
     allLamps.clear()
 
@@ -52,6 +52,7 @@ def main_import(csvFile: str, csvSep=","):
         parentEmpty = bpy.data.objects.new("parent", None)
         parentEmpty.empty_display_size = 2
         parentEmpty.empty_display_type = 'PLAIN_AXES'
+        parentEmpty.scale = [parentScale]*3
         
         importCol.objects.link(parentEmpty)
 
