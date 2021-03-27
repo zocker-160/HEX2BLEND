@@ -40,6 +40,7 @@ def insert_keyframe(frame: int, keyframes: list):
         l.color[1] = keyframes[i]["g"]
         l.color[2] = keyframes[i]["b"]
 
+        print(f"inserting keyframe at frame {frame} with {l.color}")
         lamp.keyframe_insert('color', frame=frame)
 
 
