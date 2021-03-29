@@ -31,7 +31,9 @@ def insert_keyframe(frame: int, keyframes: list):
     #if len(keyframes) != len(allLamps):
     #    raise TypeError("number of leds does not match with animation data")
 
-    bpy.context.scene.frame_end = frame
+    fps: int = bpy.context.scene.render.fps
+
+    bpy.context.scene.frame_end = frame * fps
 
     for i, lamp in enumerate(allLamps):
         l: bpy.types.Object = lamp
@@ -39,7 +41,7 @@ def insert_keyframe(frame: int, keyframes: list):
         l.color = keyframes[i]["r"], keyframes[i]["g"], keyframes[i]["b"]
 
         print(f"inserting keyframe at frame {frame} with {l.color}")
-        lamp.keyframe_insert('color', frame=frame)
+        lamp.keyframe_insert('color', frame=(frame-1)*fps+1)
 
 
 def main_import(csvFile: str, csvSep: str, parentScale: float):
